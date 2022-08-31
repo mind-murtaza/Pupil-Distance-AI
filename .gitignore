@@ -1,0 +1,5 @@
+/node_modules
+package-lock.json
+package.json
+assets/audio/audio_backup/
+.eslintrc.json

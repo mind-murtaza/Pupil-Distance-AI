@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+  <body>
+    <iframe id="theiframe" width="100%" height="576px" 
+      src="https://vto.devphysicianseyecaregroup.com/browser-pd?embed=1&domain=http://localhost:5500" allow="camera"></iframe>
+      
+  </body>
+
+  <script>
+    var iframe;
+    var PERMITTED_DOMAIN = "https://vto.devphysicianseyecaregroup.com";
+    /**
+     * Receiving message from other domain
+     */
+    console.log("Receiving message from")
+    window.addEventListener('message', function(event) {
+      console.log('🎮🌴 ~ window.addEventListener ~ event', event)
+      if (event.origin === PERMITTED_DOMAIN) {
+        if (event.data) {
+          let eyeData = $.parseJSON(JSON.stringify(event.data))
+          localStorage.setItem("left_pd", eyeData.left_eye);
+          localStorage.setItem("right_pd", eyeData.right_eye);
+        } else {
+              localStorage.removeItem("left_pd");
+              localStorage.removeItem("right_pd");
+        }
+      }
+    });
+  </script>
+</html>
