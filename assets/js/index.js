@@ -9,6 +9,7 @@ import {
   AUDIO_NO_FACE_DETECTED_PATH,
   IRIS_DIAMETER
 } from '/Pupil-Distance-AI/env.js'
+// } from '/env.js'
 /* eslint-disable no-undef */
 const video = document.querySelector('#video')
 const clickButton = document.querySelector('#click-photo')
@@ -230,7 +231,7 @@ const loopForVideoFunction = async () => {
           faceCloserDiv.style.color = 'green'
           faceCloserDiv.children[1].innerHTML = '✓'
           insideFaceFlag = true
-          if (facesForEye.length) {
+          if (facesForEye.length && !result) {
             eyeStraightFlag = calculateEyeDistance(facesForEye[0].scaledMesh)
           } else {
             faceLookStraight.style.color = 'red'
